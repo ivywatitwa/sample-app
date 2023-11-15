@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-danger">
+      <h3 class="text-center text-white"> USERS</h3> 
+    </div>
+    <div class="card-body">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-striped table row-border hover">
+        <thead class="text-start">
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody class="text-start">
+          <tr *ngFor="let user of users">
+            <td>{{ user.firstName }} {{ user.middleName }} {{ user.lastName }}</td>
+            <td>{{ user.username }}</td>
+          </tr>
+        </tbody>
+      </table> 
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+
+<h3 class="text-center text-danger m-4">CREATE USER</h3>
+<div class="container mt-5 bg-light">
+    <form (ngSubmit)="onSubmit()">
+   <div class="row mb-6">
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="firstName">First name</label>
+          <input type="text" id="firstName" class="form-control"  [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" name="firstName" required/>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="middleName">Middle name</label>
+          <input type="text" id="middleName" class="form-control"  [(ngModel)]="user.middleName" [ngModelOptions]="{standalone: true}" name="middleName" required/>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="lastName">Last name</label>
+          <input type="text" id="lastName" class="form-control"  [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" name="lastName" required/>
+        </div>
+      </div>
+    </div>
+    <div class="form-outline mb-6">
+      <label class="form-label" for="username">User Name</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" name="username" required>
+    </div>
+  
+    <div class="form-outline mb-6">
+      <label class="form-label" for="password">Password</label>
+      <input type="password" id="password" class="form-control" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" name="password" required/>
+    </div>
+  
+    <button type="submit" class="btn btn-primary btn-block my-4">Create</button>
+  
+  
