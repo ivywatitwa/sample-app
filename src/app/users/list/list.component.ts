@@ -14,34 +14,29 @@ export class ListComponent implements OnInit {
 
   users: Array<any> = [];
 
-  dtOptions: DataTables.Settings = {
-    paging: true,
-    ordering: false,
-    info: false,
-    search: false
-  };
+  dtOptions: DataTables.Settings = {};
 
   dtTrigger: Subject<any> = new Subject<any>();
   constructor(private listService: ListService) {}
 
   ngOnInit(): void {
+    this.dtOptions={
+      pagingType: 'full_numbers'
+    }
     this.listService.getUsers().subscribe(
       (data) => {
         this.users = data;
-        this.dtTrigger.next(true);
+        this.dtTrigger.next(null);
       },
       (error) => {
         console.log('Error fetching data:', error);
       }
     );
   }
-
-  ngAfterViewInit(): void {
-    this.dtTrigger.next(true);
-  }
-
+  
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
 }
+

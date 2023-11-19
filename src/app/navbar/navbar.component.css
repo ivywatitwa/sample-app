@@ -1,0 +1,19 @@
+.back{
+    background-color: #de3b57;
+    
+}
+
+.logout{
+    color: white;
+    background-color: #0f7173;
+}
+
+.navbar-expand-lg, .navbar-toggler{
+    display: flex !important;
+ 
+
+}
+
+.navbar-toggler-icon{
+    color: white !important;
+}

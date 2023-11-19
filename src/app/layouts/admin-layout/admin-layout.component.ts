@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-admin-layout',
+  templateUrl: './admin-layout.component.html',
+  styleUrls: ['./admin-layout.component.css']
 })
-export class AppComponent {
+export class AdminLayoutComponent implements OnInit {
   title = 'cherehani';
   isSidebarOpen: boolean = false;
   showNavbar: boolean = true;
@@ -23,5 +23,5 @@ export class AppComponent {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-}
 
+}

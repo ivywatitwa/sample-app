@@ -11,13 +11,16 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AuthComponent } from './auth/auth.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 export function getToken() {
   return localStorage.getItem('access_token');
 }
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, AuthComponent],
+  declarations: [AppComponent, SidebarComponent, AuthComponent, NavbarComponent, AdminLayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +32,7 @@ export function getToken() {
         tokenGetter: getToken,
       },
     }),
+    FontAwesomeModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
