@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 export class NavbarComponent {
   @Output() toggleSidebarEvent = new EventEmitter<void>();
 
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService,private toastr: ToastrService){
 
   }
 
@@ -19,5 +20,6 @@ export class NavbarComponent {
 
   logOut(){
     this.authService.logout();
+    this.toastr.success('Success', 'You logged out successfully.')
   }
 }

@@ -8,12 +8,14 @@ import { DataTablesModule } from 'angular-datatables';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthComponent } from './auth/auth.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function getToken() {
   return localStorage.getItem('access_token');
@@ -26,11 +28,17 @@ export function getToken() {
     AppRoutingModule,
     DataTablesModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
       },
+    }),
+    ToastrModule.forRoot({ 
+      timeOut: 1000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
     }),
     FontAwesomeModule,
   ],

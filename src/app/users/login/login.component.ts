@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/auth.service'; 
 
 @Component({
@@ -14,7 +14,10 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private http: HttpClient, private router: Router) { }
+  constructor(private authService: AuthService, 
+    private http: HttpClient, 
+    private router: Router,
+    private toastr: ToastrService) { }
   ngOnInit(): void {
   }
   login() {
@@ -28,10 +31,12 @@ export class LoginComponent implements OnInit {
         (response) => {
           console.log('Response:', response);
           localStorage.setItem('access_token', response.access_token);
-          this.router.navigate(['/users']);
+          this.toastr.success('Success!', 'Welcome');
+          this.router.navigate(['users/list']);
         },
         (error) => {
           console.log('Error:', error);
+            this.toastr.error('Username or Password is incorrect!', error.error.message);
         }
       );
   }
